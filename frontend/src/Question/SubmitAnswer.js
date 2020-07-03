@@ -9,3 +9,16 @@ class SubmitAnswer extends Component {
       answer: '',
     };
   }
+  updateAnswer(value) {
+    this.setState({
+      answer: value,
+    });
+  }
+
+  submit() {
+    this.props.submitAnswer(this.state.answer);
+
+    this.setState({
+      answer: '',
+    });
+  }
