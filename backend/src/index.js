@@ -33,3 +33,24 @@ app.get('/', (req, res) => {
   }));
   res.send(qs);
 });
+
+// get a specific question
+app.get('/:id', (req, res) => {
+    const question = questions.filter(q => (q.id === parseInt(req.params.id)));
+    if (question.length > 1) return res.status(500).send();
+    if (question.length === 0) return res.status(404).send();
+    res.send(question[0]);
+  });
+  
+  // insert a new question
+  app.post('/', (req, res) => {
+    const {title, description} = req.body;
+    const newQuestion = {
+      id: questions.length + 1,
+      title,
+      description,
+      answers: [],
+    };
+    questions.push(newQuestion);
+    res.status(200).send();
+  });
