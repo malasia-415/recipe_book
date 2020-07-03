@@ -18,3 +18,21 @@ class Auth {
     this.signIn = this.signIn.bind(this);
     this.signOut = this.signOut.bind(this);
   }
+
+  getProfile() {
+    return this.profile;
+  }
+
+  getIdToken() {
+    return this.idToken;
+  }
+
+  isAuthenticated() {
+    return new Date().getTime() < this.expiresAt;
+  }
+
+  signIn() {
+    this.auth0.authorize();
+  }
+
+  
