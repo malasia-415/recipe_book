@@ -13,3 +13,20 @@ class NewQuestion extends Component {
       description: '',
     };
   }
+
+  updateDescription(value) {
+    this.setState({
+      description: value,
+    });
+  }
+
+  updateTitle(value) {
+    this.setState({
+      title: value,
+    });
+  }
+
+  async submit() {
+    this.setState({
+      disabled: true,
+    });
